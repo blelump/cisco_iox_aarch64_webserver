@@ -1,0 +1,23 @@
+descriptor-schema-version: "2.7"
+
+info:
+  name: "iox_aarch64_webserver"
+  description: "simple docker webserver for arm64v8"
+  version: "1.0"
+  author-link: "http://www.cisco.com"
+  author-name: "Jens Depuydt"
+
+app:
+  cpuarch: "aarch64"
+  type: "docker"
+  resources:
+    profile: c1.tiny
+    network:
+      -
+        interface-name: eth0
+        ports:
+          tcp: ["9000"]
+
+  startup:
+    rootfs: rootfs.tar
+    target: ["python","/webserver.py"]
